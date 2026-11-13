@@ -189,13 +189,18 @@ body{background:#fff}
   border-left:2px solid rgba(242,88,43,.55);padding-left:12px;line-height:1.7}
 .cover .pdfnote strong{color:#C6D6E6;font-weight:700}
 /* cover call to action */
-.cover .cta{display:inline-flex;align-items:center;gap:10px;margin:34px 0 0;
+.cover .ctarow{display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  margin:34px 0 0;position:relative;z-index:1}
+.cover .cta{display:inline-flex;align-items:center;gap:10px;
   padding:12px 22px;border:1px solid rgba(242,88,43,.9);border-radius:999px;
   color:#fff;text-decoration:none;font-size:14px;font-weight:700;
-  position:relative;z-index:1;transition:background .18s}
+  transition:background .18s}
 .cover .cta:hover{background:var(--orange);border-color:var(--orange)}
 .cover .cta .arrow{color:#F7A488}
 .cover .cta:hover .arrow{color:#fff}
+.cover .altpdf{color:#A9BDD0;text-decoration:none;font-size:13px;
+  border-bottom:1px solid rgba(169,189,208,.45);padding-bottom:2px}
+.cover .altpdf:hover{color:#fff;border-bottom-color:rgba(255,255,255,.6)}
 /* The Chinese cover title is one character too long for the 720px text column
    at 44px, which strands "产" on a line of its own. Trim 3px on screen only;
    the print path keeps its own 34pt and is untouched. */
@@ -443,6 +448,7 @@ body{background:#fff}
   var btns=[].slice.call(document.querySelectorAll('.langbar-global button'));
   var pdf=[].slice.call(document.querySelectorAll('.pdfbtn'));
   var titles={"zh":"企业级 AI Agent 落地：从试点到生产","en":"Enterprise AI Agent Adoption: From Pilot to Production"}, docs=[];
+  var pill=document.querySelector('.pdfbtn');
   function set(lang,remember,keepPos){
     var from=document.documentElement.lang==='en'?'en':'zh';
     var ratio=1;
@@ -454,6 +460,7 @@ body{background:#fff}
     btns.forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===lang)});
     document.documentElement.lang=lang==='zh'?'zh-CN':'en';
     document.title=titles[lang];
+    if(pill){pill.href='whitepaper-'+lang+'.pdf';pill.textContent='PDF · '+(lang==='zh'?'中文':'EN')}
     if(remember){try{localStorage.setItem('wp-lang',lang)}catch(e){}}
     var q=lang==='en'?'?lang=en':'';
     if(location.search!==q){history.replaceState(null,'',location.pathname+q+location.hash)}

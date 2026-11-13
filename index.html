@@ -189,13 +189,18 @@ body{background:#fff}
   border-left:2px solid rgba(242,88,43,.55);padding-left:12px;line-height:1.7}
 .cover .pdfnote strong{color:#C6D6E6;font-weight:700}
 /* cover call to action */
-.cover .cta{display:inline-flex;align-items:center;gap:10px;margin:34px 0 0;
+.cover .ctarow{display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  margin:34px 0 0;position:relative;z-index:1}
+.cover .cta{display:inline-flex;align-items:center;gap:10px;
   padding:12px 22px;border:1px solid rgba(242,88,43,.9);border-radius:999px;
   color:#fff;text-decoration:none;font-size:14px;font-weight:700;
-  position:relative;z-index:1;transition:background .18s}
+  transition:background .18s}
 .cover .cta:hover{background:var(--orange);border-color:var(--orange)}
 .cover .cta .arrow{color:#F7A488}
 .cover .cta:hover .arrow{color:#fff}
+.cover .altpdf{color:#A9BDD0;text-decoration:none;font-size:13px;
+  border-bottom:1px solid rgba(169,189,208,.45);padding-bottom:2px}
+.cover .altpdf:hover{color:#fff;border-bottom-color:rgba(255,255,255,.6)}
 /* The Chinese cover title is one character too long for the 720px text column
    at 44px, which strands "产" on a line of its own. Trim 3px on screen only;
    the print path keeps its own 34pt and is untouched. */
@@ -219,7 +224,7 @@ body{background:#fff}
     <button type="button" data-lang="zh" aria-label="中文版">中文</button>
     <button type="button" data-lang="en" aria-label="English edition">EN</button>
   </div>
-  <a class="pdfbtn" href="whitepaper-zh.pdf">PDF</a>
+  <a class="pdfbtn" href="whitepaper-zh.pdf">PDF · 中文</a>
 </div>
 <section class="pane" data-lang="zh" id="pane-zh">
 <div class="sheet">
@@ -233,7 +238,7 @@ body{background:#fff}
       <p class="sub">一份给决策者的精简判断框架</p>
       <div class="rule"></div>
       <div class="meta">作者：King Cao<br>适用对象：正在推进 AI Agent 落地，但试点多、上生产少的金融与大型企业<br>2026 年 11 月</div>
-      <a class="cta" href="whitepaper-zh.pdf">下载 PDF · 12 页<span class="arrow">↓</span></a>
+      <div class="ctarow"><a class="cta" href="whitepaper-zh.pdf">下载 PDF · 12 页<span class="arrow">↓</span></a><a class="altpdf" href="whitepaper-en.pdf">English PDF</a></div>
       <div class="edition"><strong>企业级 AI Agent 落地白皮书</strong> &nbsp;·&nbsp; 中文版</div>
     </div>
   </header>
@@ -341,7 +346,7 @@ body{background:#fff}
       <p class="sub">A short decision framework for executives</p>
       <div class="rule"></div>
       <div class="meta">Author: King Cao<br>For financial institutions and large enterprises with many AI pilots and few production deployments<br>November 2026</div>
-      <a class="cta" href="whitepaper-en.pdf">Download PDF · 15 pages<span class="arrow">↓</span></a>
+      <div class="ctarow"><a class="cta" href="whitepaper-en.pdf">Download PDF · 15 pages<span class="arrow">↓</span></a><a class="altpdf" href="whitepaper-zh.pdf">中文 PDF</a></div>
       <div class="edition"><strong>Enterprise AI Agent Adoption</strong> &nbsp;·&nbsp; English edition</div>
     </div>
   </header>
@@ -443,6 +448,7 @@ body{background:#fff}
   var btns=[].slice.call(document.querySelectorAll('.langbar-global button'));
   var pdf=[].slice.call(document.querySelectorAll('.pdfbtn'));
   var titles={"zh":"企业级 AI Agent 落地：从试点到生产","en":"Enterprise AI Agent Adoption: From Pilot to Production"}, docs=[];
+  var pill=document.querySelector('.pdfbtn');
   function set(lang,remember,keepPos){
     var from=document.documentElement.lang==='en'?'en':'zh';
     var ratio=1;
@@ -454,6 +460,7 @@ body{background:#fff}
     btns.forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===lang)});
     document.documentElement.lang=lang==='zh'?'zh-CN':'en';
     document.title=titles[lang];
+    if(pill){pill.href='whitepaper-'+lang+'.pdf';pill.textContent='PDF · '+(lang==='zh'?'中文':'EN')}
     if(remember){try{localStorage.setItem('wp-lang',lang)}catch(e){}}
     var q=lang==='en'?'?lang=en':'';
     if(location.search!==q){history.replaceState(null,'',location.pathname+q+location.hash)}
