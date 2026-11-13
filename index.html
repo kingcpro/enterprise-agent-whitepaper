@@ -448,6 +448,7 @@ body{background:#fff}
   var btns=[].slice.call(document.querySelectorAll('.langbar-global button'));
   var pdf=[].slice.call(document.querySelectorAll('.pdfbtn'));
   var titles={"zh":"企业级 AI Agent 落地：从试点到生产","en":"Enterprise AI Agent Adoption: From Pilot to Production"}, docs=[];
+  var pdfmap={"zh": "whitepaper-zh.pdf", "en": "whitepaper-en.pdf"};
   var pill=document.querySelector('.pdfbtn');
   function set(lang,remember,keepPos){
     var from=document.documentElement.lang==='en'?'en':'zh';
@@ -460,7 +461,7 @@ body{background:#fff}
     btns.forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===lang)});
     document.documentElement.lang=lang==='zh'?'zh-CN':'en';
     document.title=titles[lang];
-    if(pill){pill.href='whitepaper-'+lang+'.pdf';pill.textContent='PDF · '+(lang==='zh'?'中文':'EN')}
+    if(pill){pill.href=pdfmap[lang];pill.textContent='PDF · '+(lang==='zh'?'中文':'EN')}
     if(remember){try{localStorage.setItem('wp-lang',lang)}catch(e){}}
     var q=lang==='en'?'?lang=en':'';
     if(location.search!==q){history.replaceState(null,'',location.pathname+q+location.hash)}
