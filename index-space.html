@@ -228,7 +228,7 @@ body{background:#fff}
     <button type="button" data-lang="zh" aria-label="中文版">中文</button>
     <button type="button" data-lang="en" aria-label="English edition">EN</button>
   </div>
-  
+  <a class="pdfbtn" href="https://feishu.doubao.com/drive/file/A9Eqbo9ctoayMDxxZTpcCVQanbd" target="_blank" rel="noopener">PDF · 中文</a>
 </div>
 <section class="pane" data-lang="zh" id="pane-zh">
 <div class="sheet">
@@ -242,7 +242,7 @@ body{background:#fff}
       <p class="sub">一份给决策者的精简判断框架</p>
       <div class="rule"></div>
       <div class="meta">作者：King Cao<br>适用对象：正在推进 AI Agent 落地，但试点多、上生产少的金融与大型企业<br>2026 年 11 月</div>
-      <div class="pdfnote">PDF 版本：公众号后台或私信索取</div>
+      <div class="ctarow"><a class="cta" href="https://feishu.doubao.com/drive/file/A9Eqbo9ctoayMDxxZTpcCVQanbd" target="_blank" rel="noopener">下载 PDF · 12 页<span class="arrow">↓</span></a><a class="altpdf" href="https://feishu.doubao.com/drive/file/EB0WbymDooygVhx34YzcKwwSnqc" target="_blank" rel="noopener">English PDF</a></div>
       <div class="edition"><strong>企业级 AI Agent 落地白皮书</strong> &nbsp;·&nbsp; 中文版</div>
     </div>
   </header>
@@ -350,7 +350,7 @@ body{background:#fff}
       <p class="sub">A short decision framework for executives</p>
       <div class="rule"></div>
       <div class="meta">Author: King Cao<br>For financial institutions and large enterprises with many AI pilots and few production deployments<br>November 2026</div>
-      <div class="pdfnote">PDF edition: available on request</div>
+      <div class="ctarow"><a class="cta" href="https://feishu.doubao.com/drive/file/EB0WbymDooygVhx34YzcKwwSnqc" target="_blank" rel="noopener">Download PDF · 15 pages<span class="arrow">↓</span></a><a class="altpdf" href="https://feishu.doubao.com/drive/file/A9Eqbo9ctoayMDxxZTpcCVQanbd" target="_blank" rel="noopener">中文 PDF</a></div>
       <div class="edition"><strong>Enterprise AI Agent Adoption</strong> &nbsp;·&nbsp; English edition</div>
     </div>
   </header>
@@ -452,7 +452,7 @@ body{background:#fff}
   var btns=[].slice.call(document.querySelectorAll('.langbar-global button'));
   var pdf=[].slice.call(document.querySelectorAll('.pdfbtn'));
   var titles={"zh":"企业级 AI Agent 落地：从试点到生产","en":"Enterprise AI Agent Adoption: From Pilot to Production"}, docs=[];
-  var pdfmap={"zh": "whitepaper-zh.pdf", "en": "whitepaper-en.pdf"};
+  var pdfmap={"zh": "https://feishu.doubao.com/drive/file/A9Eqbo9ctoayMDxxZTpcCVQanbd", "en": "https://feishu.doubao.com/drive/file/EB0WbymDooygVhx34YzcKwwSnqc"};
   var pill=document.querySelector('.pdfbtn');
   function set(lang,remember,keepPos){
     var from=document.documentElement.lang==='en'?'en':'zh';
