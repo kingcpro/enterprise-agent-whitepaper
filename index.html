@@ -184,6 +184,10 @@ body{background:#fff}
 .pdfbtn:hover{text-decoration:underline}
 .pane{display:none}
 .pane.active{display:block}
+/* space edition: no PDF button, just a pointer to the sibling file */
+.cover .pdfnote{margin:34px 0 0;font-size:13.5px;color:#A9BDD0;position:relative;z-index:1;
+  border-left:2px solid rgba(242,88,43,.55);padding-left:12px;line-height:1.7}
+.cover .pdfnote strong{color:#C6D6E6;font-weight:700}
 /* cover call to action */
 .cover .cta{display:inline-flex;align-items:center;gap:10px;margin:34px 0 0;
   padding:12px 22px;border:1px solid rgba(242,88,43,.9);border-radius:999px;
@@ -433,8 +437,7 @@ body{background:#fff}
     </div>
   </footer>
 </div>
-</section>
-<script>
+</section><script>
 (function(){
   var panes=[].slice.call(document.querySelectorAll('.pane'));
   var btns=[].slice.call(document.querySelectorAll('.langbar-global button'));
